@@ -26,6 +26,11 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+/* we add the class to remove uppercase  */
+.btn {
+  text-transform: none;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

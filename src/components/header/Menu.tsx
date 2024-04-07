@@ -8,8 +8,6 @@ import { useEffect, useState } from 'react'
 
 const Menu = () => {
   const { items, init } = useCartService()
-
-  // To prevent client side erros(we ensure this component only render client side)
   const [mounted, setMounted] = useState(false)
   useEffect(() => {
     setMounted(true)
@@ -23,6 +21,10 @@ const Menu = () => {
   const { data: session } = useSession()
 
   const { theme, toggleTheme } = useLayoutService()
+
+  const handleClick = () => {
+    ;(document.activeElement as HTMLElement).blur()
+  }
 
   return (
     <div>
@@ -92,13 +94,13 @@ const Menu = () => {
                   tabIndex={0}
                   className="menu dropdown-content z-[1] p-2 shadow bg-base-300 rounded-box w-52 "
                 >
-                  <li>
+                  <li onClick={handleClick}>
                     <Link href="/order-history">Order history </Link>
                   </li>
-                  <li>
+                  <li onClick={handleClick}>
                     <Link href="/profile">Profile</Link>
                   </li>
-                  <li>
+                  <li onClick={handleClick}>
                     <button type="button" onClick={signoutHandler}>
                       Sign out
                     </button>

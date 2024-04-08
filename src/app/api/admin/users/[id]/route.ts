@@ -12,6 +12,7 @@ export const GET = auth(async (...args: any) => {
       }
     )
   }
+
   await dbConnect()
   const user = await UserModel.findById(params.id)
   if (!user) {
